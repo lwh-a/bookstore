@@ -46,3 +46,9 @@ async function bookData() {
 }
 
 bookData();
+
+const select = document.querySelector(".category_select");
+
+select.addEventListener("change", function () {
+    bookData(this.value);
+});

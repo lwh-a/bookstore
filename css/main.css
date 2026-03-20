@@ -5,9 +5,8 @@
     width: 1140px;
     height: 100%;
     margin: 0 auto;
-    background-color: gold;
 }
-
+/* header */
 header {
     width: 100%;
     height: 160px;
@@ -22,30 +21,41 @@ header {
 #header_top .container {
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items:center;
 }
 
 #login {
     width: 290px;
     height: 20px;
-    background-color: tomato;
 }
 
 #login ul{
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    font-size: 12px;
+
+     li:after {content: "|"; float: right; margin-right: -11px; }
+
+        li:last-child::after{content: "";}
     
 }
-}
+
 
 
 #header_main {
     width: 1140px;
     height: 70px;
     margin: 0 auto;
-    background-color: rgba(16, 160, 160, 0.863);
+    background-color: rgba(64, 16, 160, 0.863);
     display: flex; align-items: center; 
+    gap: 10px;
+}
+.category_select {
+    height: 35px;
+    border: 1px solid #bbbbbb;
+    border-radius:10%;
+    background-color: white;
+    font-size: 16px;
 }
 
 .logo{
@@ -88,6 +98,8 @@ aside {
     height: 100%;
     background-color: greenyellow;
 }
+
+aside_box{width: ;}
 
 #main_content {
     width: calc(100% - 300px);
@@ -188,4 +200,56 @@ footer {
     width: 100%;
     height: 180px;
     border-top: 1px solid #ddd;
+    background-color: violet;
+    
+}
+
+footer .container {
+    align-items: flex-start;
+    padding-top: 30px;
+}
+
+footer ul {
+    width: 320px;
+    height: 25px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    background-color: aqua;
+
+}
+
+footer ul li::after {
+    content: "|";
+    margin-left: 16px;
+}
+
+footer ul li:last-child::after {
+    content: "";
+}
+
+footer .container ul li.active a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+    
+}
+
+footer .container ul li a {
+    color: #888; 
+}
+
+
+.footer_bottom  {
+    font-size: 11px;
+    justify-content: space-between; 
+
+    
+}
+
+.footer_bottom p:first-of-type{
+    margin-top: 20px; 
+    margin-bottom: 10px;
+    color: #444;
+    font-weight: bold;
 }

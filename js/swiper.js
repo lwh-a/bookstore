@@ -19,7 +19,7 @@ var new_swiper = new Swiper(".newSwiper", {
       },
       navigation: {
         nextEl: "#new .swiper-button-next",
-        prevEL: "#new .swiper-button-prev", 
+        prevEl: "#new .swiper-button-prev", 
       },
       slidesPerGroup: 5
     });
