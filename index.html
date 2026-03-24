@@ -63,14 +63,44 @@
 
     <!-- main -->
     <main>
-        <aside></aside>
+
+        <aside>
+            <ul class="aside_box">
+                <!-- 1구역 -->
+                <li>
+                    <ul class="group">
+                        <li class="title">단기북스</li>
+                    </ul>
+                </li>
+                <!-- 2구역 -->
+                <li>
+                    <ul class="group">
+                        <li class="home">홈</li>
+                        <li>전체 교재</li>
+                        <li>베스트셀러</li>
+                        <li class="hazy">주간</li>
+                        <li class="hazy">월간</li>
+                    </ul>
+                </li>
+                <!-- 3구역 -->
+                <li>
+                    <ul class="group">
+                        <li class="event">이벤트</li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
 
         <div id="main_content">
             <div id="slider">
                 <div id="slider_txt">
+                    공단기 <span class="PICK">Pick!</span><br>추천 교재
+                    <p class=hazy><br>단기북스 MD가<br> 자신있게 추천하는 오늘의 책</p>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
+
                 </div>
+
                 <!-- Swiper -->
                 <div class="swiper sliderSwiper">
                     <div class="swiper-wrapper">
@@ -82,8 +112,55 @@
                     <div class="swiper-pagination"></div>
                 </div>
             </div>
-            <div id="search"></div>
-            <div id="best"></div>
+
+            <div id="search">
+                <div class="container">
+                    <p>교재 검색</p>
+                    <select class="category_select">
+                        <option>교재명</option>
+                        <option>저자명</option>
+                        <option>충판사명</option>
+                        <option>HSBN</option>
+                    </select>
+                    <input type="text" class="search_input" placeholder="저자명/교재명 검색">
+                    <button class="search_btn">검색</button>
+                </div>
+
+            </div>
+
+            <div id="best">
+                <h4>공단기 베스트셀러</h4>
+                <ul id="booktab">
+                    <li>월간</li>
+                    <li>주간</li>
+                </ul>
+
+                <article id="tab1">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </article>
+
+                <article id="tab2">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </article>
+            </div>
             <div id="banner"></div>
             <div id="new">
                 <!-- <header> -->
@@ -111,6 +188,7 @@
     </main>
 
     <footer>
+
         <div class="container">
 
             <div class="footer_top">
@@ -119,7 +197,14 @@
                     <li><a href="#">이용약관</a></li>
                     <li class="active"><a href="#">개인정보처리방침</a></li>
                     <li><a href="#">강사모집</a></li>
-                </ul>               
+
+
+                </ul>
+                <select class="footer_select">
+                    <option>패밀리사이트</option>
+                    <option>사이트1</option>
+                    <option>사이트2</option>
+                </select>
 
             </div>
 
@@ -135,6 +220,7 @@
                     호스팅제공자 : © 2022, Amazon Web Services, Inc</p>
             </div>
         </div>
+
 
     </footer>
 
