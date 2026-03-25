@@ -1,3 +1,7 @@
+const API_KEY = "KakaoAK 749ed04b4081db578aecf104a677ac42"
+
+
+
 async function fetchBooks(query) {
             const params = new URLSearchParams({
                 target: "title",
@@ -9,7 +13,7 @@ async function fetchBooks(query) {
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    Authorization: "KakaoAK 7b2300fc6315bb65035d1a3c7b49b161"
+                    Authorization: API_KEY
                 }
             });
 
@@ -44,7 +48,6 @@ async function fetchBooks(query) {
                         <h5>${doc.title}</h5>
                         <h6>${doc.authors}</h6>
                         <p>${doc.price}원</p>
-                        <button>click</button>
                         `
                     });
                 }
@@ -57,8 +60,6 @@ async function fetchBooks(query) {
 
         const tabItems = document.querySelectorAll('#booktab li');
         const tabs = document.querySelectorAll('article');
-        const titleList = document.getElementById('titlelist');
-
         tabItems.forEach((tab, i) => {
             tab.addEventListener('click', () => {
                 // 탭에 해당하는 리스트 보이고, 나머지는 숨기기
@@ -66,15 +67,14 @@ async function fetchBooks(query) {
                     tab.style.display = (i === j) ? 'flex' : 'none';
                 });
 
-                // 제목 텍스트 변경
-                titleList.textContent = tab.textContent;
             });
         });
 
-async function bookData() {
+
+async function bookData(query) {
     const params = new URLSearchParams({
         target: "title",
-        query: "미움받을 용기",
+        query: query,
         size: 10
     });
     const url = `https://dapi.kakao.com/v3/search/book?${params}`
@@ -83,7 +83,7 @@ async function bookData() {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                Authorization: "KakaoAK 749ed04b4081db578aecf104a677ac42"
+                Authorization: API_KEY
             }
         });
 
@@ -106,10 +106,11 @@ async function bookData() {
 
             // 요소 생성 및 추가
             box.innerHTML = `<img src="${data.documents[i].thumbnail}">
-                    <h5>${data.documents[i].title}</h5>
-                    <h6>${data.documents[i].authors}</h6>
-                    <p>${data.documents[i].price}원</p>
-                    <button>click</button>
+                <div>
+                    <h5>${doc.title}</h5>
+                    <h6>${doc.authors} &nbsp; ${data.documents[i].publisher}</h6>
+                    <p>${doc.price}원</p>
+                </div>
                     `
         });
 
@@ -117,9 +118,33 @@ async function bookData() {
         console.log('에러발생', error);
     }
 }
+async function renderThumbs(query) {
+    const data = await fetchBooks(query);
+    const container = document.querySelector(".thumbSwiper .swiper-wrapper");
 
-bookData();
+    container.innerHTML = "";
 
+    data.documents.forEach((doc, i) => {
+        const thumb = document.createElement("div");
+        thumb.classList.add("swiper-slide");
+
+        if (i === 0) thumb.classList.add("active");
+
+        thumb.innerHTML = `<img src="${doc.thumbnail}">`;
+
+        thumb.addEventListener("click", () => {
+    slider_swiper.slideTo(i); // ⭐ 슬라이드 이동
+});
+
+
+        container.appendChild(thumb);
+    });
+    
+thumbSwiper.update();
+slider_swiper.update();
+}
+bookData("책한권");
+renderThumbs("책한권");
 
 async function bookData2() {
     const params = new URLSearchParams({
@@ -133,7 +158,7 @@ async function bookData2() {
         const response = await fetch(url, {
             method: 'GET',
             headers: {
-                Authorization: "KakaoAK 749ed04b4081db578aecf104a677ac42"
+                Authorization: API_KEY
             }
         });
 
@@ -159,7 +184,6 @@ async function bookData2() {
                     <h5>${data.documents[i].title}</h5>
                     <h6>${data.documents[i].authors}</h6>
                     <p>${data.documents[i].price}원</p>
-                    <button>click</button>
                     `
         });
 
@@ -170,8 +194,9 @@ async function bookData2() {
 
 bookData2();
 
-const select = document.querySelector(".category_select");
+const select = document.querySelector("#search .category_select");
 
 select.addEventListener("change", function () {
     bookData(this.value);
+    renderThumbs(this.value);
 });
