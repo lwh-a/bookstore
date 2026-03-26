@@ -105,7 +105,7 @@ async function bookData(query) {
             if (!doc) return; // 데이터가 부족할 경우 생략
 
             // 요소 생성 및 추가
-            box.innerHTML = `<img src="${data.documents[i].thumbnail}">
+            box.innerHTML = `<a href="sub.html"><img src="${data.documents[i].thumbnail}"></a>
                 <div>
                     <h5>${doc.title}</h5>
                     <h6>${doc.authors} &nbsp; ${data.documents[i].publisher}</h6>

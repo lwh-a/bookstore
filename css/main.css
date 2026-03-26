@@ -101,7 +101,7 @@ nav ul {
 /* main */
 main {
     width: 1140px;
-    height: 2200px;
+    height: 1900px;
     margin: 0 auto;
     display: flex;
 }
@@ -178,6 +178,11 @@ aside {
 
 #best {
     margin-top: 40px;
+}
+
+#best h5 {
+    position: absolute;
+  left: -9999px;
 }
 
 #best article {
@@ -330,19 +335,39 @@ aside {
     border: 1px solid #ddd;
     border-radius: 10px;
     display: flex;
-    /* background-color: green; */
+    position: relative;
 
 }
     /* 페이지 네비게이션 버튼 */
 
+/* .thumbSwiper {
+    margin-top: 10px;
+    position: absolute;
+    bottom: 360px;
+    right: 370px;
+    width: 20%;
+    height: 50px;
+    z-index: 10;
+} */
 
 .thumbSwiper {
     margin-top: 10px;
+    position: absolute;
+    left: 515px;
+    top:  250px;
+    width: 30%;
+    height: 14%;
+    z-index: 10;
 }
 
 .thumbSwiper .swiper-slide {
     opacity: 0.4;
     cursor: pointer;
+}
+
+.thumbSwiper .swiper-slide img {
+    width: 99.9%;
+    height: 100%;
 }
 
 .thumbSwiper .swiper-slide-thumb-active {
@@ -386,13 +411,13 @@ aside {
 }
 
 /* swiper css */
-#slider .swiper {
+#slider .sliderSwiper {
     width: calc(100% - 270px);
     height: 100%;
 }
 
 
-#slider .swiper-slide {
+#slider .sliderSwiper .swiper-slide {
     text-align: center;
     font-size: 18px;
 
@@ -402,7 +427,11 @@ aside {
     padding: 40px;
 }
 
-#slider .swiper-slide img {
+#slider .swiper-slide a{
+    height: 100%;
+}
+
+#slider .swiper-slide a img {
     height: 100%;
 }
 
@@ -425,7 +454,7 @@ aside {
 /* new */
 #new {
     width: 100%;
-    height: 520px;
+    height: 370px;
 }
 
 #new .swiper {
@@ -450,7 +479,6 @@ footer {
     width: 100%;
     height: 180px;
     border-top: 1px solid #ddd;
-    background-color: violet;
 
 }
 
@@ -465,7 +493,6 @@ footer ul {
     display: flex;
     justify-content: space-between;
     font-size: 11px;
-    background-color: aqua;
 
 }
 
