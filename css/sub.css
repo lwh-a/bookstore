@@ -3,7 +3,7 @@
 #sub_main{
     width: 1140px;
     margin: auto;
-    background-color: black;
+    background-color: ;
 }
 
 #sub_content {
@@ -11,13 +11,55 @@
     width: 100%;
     background-color: aqua;
     margin-bottom: 40px;
+    display: flex;
 }
 
 #sub_content .photo {
     height: 100%;
-    width: 500px;
+    width: 50%;
     background-color: rgb(57, 131, 196);
+    padding: 30px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.photo img {
+    height: 60%;
+
+    background: white;
+    padding: 0 40px 0 40px;
+}
+
+#sales_window {
+    position: relative;
+    height: 100%;
+    width: 60%;
+    padding-left: 50px;
+    background-color: rgb(196, 57, 134);
+}
+
+
+#sales_window  p,
+#sales_window  table {
+    font-size: 11px;
+}
+
+#sales_window  table {
+    margin-top: 40%;
+}
+
+#sales_window td:first-of-type {width: 100px;}
+
+#sales_window .total_price {
+    margin-top: 20%;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+
 
 #new_text_book {
     height: 215px;
@@ -25,8 +67,19 @@
     background-color: brown;
     margin: auto;
     margin-bottom: 85px;
+    display: flex;
+    
+    justify-content: space-between;
 }
 
+#new_text_book img {
+    height: 50%;
+}
+
+.book_item {
+    display: flex;
+    gap: 15px;   /* 이미지랑 글자 사이 간격 */
+}
 
 .sub_bottom {
     display: flex;
@@ -63,4 +116,49 @@
     width: 720px;
     background-color: white;
     position: sticky; top: 0;
+}
+/* 아코디언  */
+.accordion-container {
+  width: 100%;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+}
+
+.accordion-header {
+  padding: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon {
+  transition: transform 0.3s ease;
+}
+
+/* active 클래스가 붙으면 아이콘을 180도 회전 */
+.accordion-item.active .icon {
+  transform: rotate(180deg);
+}
+
+
+.accordion-content {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+  background-color: white;
+  padding: 0 15px;
+}
+
+.accordion-content p {
+  padding: 15px 0;
+  margin: 0;
+}
+
+/* 활성화 된 항목 스타일 */
+.accordion-item.active .accordion-content {
+  height: 50px;
+  padding: 0 15px;
 }
