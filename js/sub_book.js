@@ -28,6 +28,9 @@ const API_KEY = "KakaoAK 749ed04b4081db578aecf104a677ac42"
                 const sub_publisher = document.querySelector(".sub_publisher");
                 const sub_datetime = document.querySelector(".sub_datetime");
                 const total_price = document.querySelector(".total_price h3");
+                const sticky_title = document.querySelector(".sticky_title");
+                const sticky_price = document.querySelector(".sticky_price span");
+                
           
 
                 // 데이터에서 필요한 값 추출
@@ -44,8 +47,11 @@ const API_KEY = "KakaoAK 749ed04b4081db578aecf104a677ac42"
                 sub_authors.innerText += authors
                 sub_publisher.innerText += publisher
                 sub_datetime.innerText += datetime.substr(0,10)
+                sticky_title.innerText = title;
+                sticky_price.innerText = price.toLocaleString() + "원";
 
                 total_price.innerText += (sale_price + 3000).toLocaleString() + '원'
+                
 
             } catch (error) {
                 console.log('에러발생', error);
@@ -98,7 +104,57 @@ boxElements.forEach((box, i) => {
     }
 }
 
+async function bookData2() {
+    const params = new URLSearchParams({
+        target: "person",
+        query: "이윤규",
+        size: 10
+    });
+
+    const url = `https://dapi.kakao.com/v3/search/book?${params}`;
+
+    try {
+        const response = await fetch(url, {
+            headers: { Authorization: API_KEY }
+        });
+
+        const data = await response.json();
+
+        const wrapper = document.querySelector(".subSwiper .swiper-wrapper");
+        wrapper.innerHTML = "";
+
+        // ⭐ 2개씩 묶기
+        for (let i = 0; i < data.documents.length; i += 2) {
+            const slide = document.createElement("div");
+            slide.classList.add("swiper-slide");
+
+            // 책 2개
+            const books = data.documents.slice(i, i + 2);
+
+            slide.innerHTML = books.map(doc => `
+                <div class="book_item">
+                    <img src="${doc.thumbnail}">
+                    <div class="text">
+                    <div>
+                        <h5>${doc.title}</h5>
+                        <h6>${doc.authors.join(", ")}</h6>
+                        <p>${doc.price.toLocaleString()}원</p>
+                        </div>
+                    </div>
+                </div>
+            `).join("");
+
+            wrapper.appendChild(slide);
+        }
+
+    } catch (error) {
+        console.log('에러발생', error);
+    }
+}
+
 bookData2();
+
+bookData3();
         //메모장으로 sub 텍스트 가져오기, 서버에 올려야 보임
         // document.addEventListener("DOMContentLoaded", async function () {
         //     try {
@@ -136,3 +192,4 @@ bookData2();
             });
         });
 
+        

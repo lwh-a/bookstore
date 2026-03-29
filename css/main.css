@@ -180,9 +180,9 @@ aside {
     margin-top: 40px;
 }
 
-#best h5 {
+.hidden-title {
     position: absolute;
-  left: -9999px;
+    left: -9999px;
 }
 
 #best article {
