@@ -163,12 +163,12 @@
 
 .sub_bottom {
     display: flex;
+    gap: 30px;
     align-items: flex-start;
 }
 
 .left_area {
     width: 720px;
-    height: auto;
     
 }
 
@@ -181,17 +181,17 @@
     border: 1px solid #bbb;
     margin-right: auto;
     border-radius: 10px;
-    position: sticky; top: 0;
+    position: sticky; top: 20px;
     display: flex;
     flex-direction: column;
-    
+    padding: 30px;
     padding: 30px;
 
 }
 
 .left_list{
     font-size: 12px;
-    
+    margin-bottom: 120px;
 }
 
 
@@ -213,7 +213,6 @@
 
 .right_area {
     width: 385px;
-    height: 2670px;
     margin-left: auto;
 }
 
@@ -251,9 +250,29 @@
 #hyperlink_switch {
     height: 60px;
     width: 720px;
-    background-color: white;
-    position: sticky; top: 0;
+    display: flex;
+    gap: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    
 }
+
+#hyperlink_switch a {
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+    padding-bottom: 5px;
+}
+
+#hyperlink_switch a.active span{
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+
 /* 아코디언  */
 .accordion-container {
   width: 100%;

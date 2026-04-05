@@ -207,6 +207,52 @@ document.addEventListener("DOMContentLoaded", async function () {
 bookData();
 bookData2();
 
+// 🔥 sticky 높이 맞추기 함수
+function syncHeight() {
+    const left = document.querySelector('.left_area');
+    const right = document.querySelector('.right_area');
 
+    if (left && right) {
+        right.style.height = left.offsetHeight + 'px';
+    }
+}
 
+// 페이지 로드 후 실행
+window.addEventListener('load', syncHeight);
+window.addEventListener('resize', syncHeight);
 
+// 아코디언 클릭 시에도 실행
+document.querySelectorAll('.accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+        setTimeout(syncHeight, 500);
+    });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const links = document.querySelectorAll("#hyperlink_switch a");
+    const sections = [
+        document.getElementById("info"),
+        document.getElementById("notice"),
+        document.getElementById("delivery")
+    ];
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 80;
+
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        links.forEach(link => {
+            link.classList.remove("active");
+
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
+        });
+    });
+});
